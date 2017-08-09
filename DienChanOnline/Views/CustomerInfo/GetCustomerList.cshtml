@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DienChanOnline.Models.CustomerInfo>
+
+@{
+    ViewBag.Title = "GetCustomerList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetCustomerList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Chi Tiết", "Index", new {id = item.FormGuidInfo, cid = item.Id}) |
+                @Html.ActionLink("Xóa", "DeleteCustomer", new {id = item.Id, guidInfo = item.FormGuidInfo}, new {onclick = "return confirm('Bạn có chắc chắn muốn xóa khách hàng này không?')"})
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    <a href="@Url.Action("GetFormType", "Admin")">
+        Quay Trở Về
+    </a>
+</div>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DienChanOnline.Models.FormType>
+@{
+    ViewBag.Title = "Quản Lý Thông Tin Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản Lý Thông Tin Form</h2>
+
+<p>
+    @Html.ActionLink("Tạo Mới", "CreateFormType")
+</p>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.TitleFr)</th>
+        <th>@Html.DisplayNameFor(model => model.Title)</th>
+        <th>@Html.DisplayNameFor(model => model.TitleVn)</th>
+        <th>@Html.DisplayNameFor(model => model.Link)</th>
+        <th>@Html.DisplayNameFor(model => model.CustomersLink)</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(m => item.Name)</td>
+            <td>@Html.DisplayFor(m => item.TitleFr)</td>
+            <td>@Html.DisplayFor(m => item.Title)</td>
+            <td>@Html.DisplayFor(m => item.TitleVn)</td>
+            <td><a href="@item.Link">Link</a></td>
+            <td><a href="@item.CustomersLink">Danh Sách</a></td>
+            <td>
+                @Html.ActionLink("Chỉnh Sửa", "EditFormType", new { guidInfo = item.GuidInfo}) |
+                @Html.ActionLink("Xóa", "DeleteFormType", new { guidInfo = item.GuidInfo}, new { onclick = "return confirm('Bạn có chắc chắn muốn xóa Form này không?')"})
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Quay trở về", "Index")
+</div>
