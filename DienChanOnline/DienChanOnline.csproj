@@ -18,8 +18,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44309</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -298,6 +297,7 @@
     </Content>
     <Content Include="Models\Generated\PetaPoco.Generator.ttinclude" />
     <Content Include="Models\Generated\PetaPoco.Core.ttinclude" />
+    <Content Include="ConnectionString.config" />
     <None Include="Properties\PublishProfiles\dienchanus.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\GoDaddy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -357,6 +357,7 @@
     <Content Include="Views\CustomerInfo\GetCustomerList.cshtml" />
     <Content Include="Views\Admin\DetailCustomer.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
