@@ -5,9 +5,9 @@ using PetaPoco;
 
 namespace DienChanOnline.Models
 {
-    [TableName("DienChanOnline..CustomerInfo")]
+    [TableName("DienChanOnline..Customer")]
     [PrimaryKey("Id", AutoIncrement = true)]
-    public class CustomerInfo
+    public class Customer
     {
         public int Id { get; set; }
 
@@ -24,6 +24,7 @@ namespace DienChanOnline.Models
         public string PhoneNumber { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = @"Please enter your email.")]
+        [StringLength(50)]
         [DisplayName(@"Email")]
         public string Email { get; set; }
 
@@ -31,7 +32,7 @@ namespace DienChanOnline.Models
         public DateTime BirthDay { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = @"Please enter your job title.")]
-        [DisplayName(@"Job title")]
+        [DisplayName(@"Job Title")]
         public string Job { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = @"Please enter your address.")]
@@ -58,8 +59,8 @@ namespace DienChanOnline.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = @"Please enter your purpose.")]
         public string Purpose { get; set; }
 
-        public string Title { get; set; }
+        public int FormId { get; set; }
 
-        public string FormGuidInfo { get; set; }
+        public Form Form { get; set; }
     }
 }

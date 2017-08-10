@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.flag-lang {
+    padding: 0 !important;
+}

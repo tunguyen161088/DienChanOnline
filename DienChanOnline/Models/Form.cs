@@ -6,7 +6,7 @@ using PetaPoco;
 namespace DienChanOnline.Models
 {
     [TableName("DienChanOnline..FormType")]
-    public class FormType
+    public class Form
     {
         public int Id { get; set; }
 
@@ -23,13 +23,5 @@ namespace DienChanOnline.Models
 
         [DisplayName("Tiêu Đề Tiếng Anh")]
         public string Title { get; set; }
-
-        [DisplayName("Link")]
-        public string Link { get; set; }
-
-        [DisplayName("Danh Sách Khách Hàng")]
-        public string CustomersLink { get; set; }
-
-        public string GuidInfo { get; set; }
     }
 }

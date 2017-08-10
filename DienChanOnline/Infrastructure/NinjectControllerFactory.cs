@@ -25,9 +25,6 @@ namespace DienChanOnline.Infrastructure
         private void AddBindings()
         {
             _ninjectKernel.Bind<IQueryBase>().To<QueryBase>();
-            _ninjectKernel.Bind<ICustomerInfoQuery>().To<CustomerInfoQuery>();
-            _ninjectKernel.Bind<IFormTypeQuery>().To<FormTypeQuery>();
-            _ninjectKernel.Bind<ICustomerAccountQuery>().To<CustomerAccountQuery>();
         }
     }
 }

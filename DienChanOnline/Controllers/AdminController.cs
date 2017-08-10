@@ -7,18 +7,9 @@ using DienChanOnline.Models.Structs;
 
 namespace DienChanOnline.Controllers
 {
-    [Authorize(Roles = RoleName.Administrator)]
+    //[Authorize(Roles = RoleName.Administrator)]
     public class AdminController: Controller
     {
-        private readonly IFormTypeQuery _formTypeQuery;
-        private readonly ICustomerInfoQuery _customerInfoQuery;
-
-        public AdminController(IFormTypeQuery formTypeQuery, ICustomerInfoQuery customerInfoQuery)
-        {
-            _formTypeQuery = formTypeQuery;
-            _customerInfoQuery = customerInfoQuery;
-        }
-
         public ActionResult Index()
         {
             return View();
@@ -26,25 +17,29 @@ namespace DienChanOnline.Controllers
 
         public ActionResult GetFormType()
         {
-            var model = _formTypeQuery.GetFormTypes();
+            //var model = _formTypeQuery.GetFormTypes();
 
-            return View(model);
+            //return View(model);
+
+            return null;
         }
 
         public ActionResult CreateFormType()
         {
-            return View("EditFormType", new FormType());
+            return View("EditFormType", new Form());
         }
 
         public ActionResult EditFormType(string guidInfo)
         {
-            var selectedType = _formTypeQuery.GetFormTypeByGuid(guidInfo);
+            //var selectedType = _formTypeQuery.GetFormTypeByGuid(guidInfo);
 
-            return View(selectedType);
+            //return View(selectedType);
+
+            return null;
         }
 
         [HttpPost]
-        public ActionResult EditFormType(FormType form)
+        public ActionResult EditFormType(Form form)
         {
             if (!ModelState.IsValid) return View(form);
 
@@ -56,12 +51,12 @@ namespace DienChanOnline.Controllers
 
             form.Title = string.IsNullOrEmpty(form.Title) ? form.TitleFr.Translate("fr|en") : form.Title.ToTitleCase();
 
-            form.GuidInfo = string.IsNullOrEmpty(form.GuidInfo) ? Guid.NewGuid().ToString() : form.GuidInfo; 
+            //form.GuidInfo = string.IsNullOrEmpty(form.GuidInfo) ? Guid.NewGuid().ToString() : form.GuidInfo; 
 
-            form.Link = $"http://dienchanus.com/CustomerInfo?id={form.GuidInfo}";
-            form.CustomersLink = $"http://dienchanus.com/CustomerInfo/GetCustomerList?guidInfo={form.GuidInfo}";
+            //form.Link = $"http://dienchanus.com/Customer?id={form.GuidInfo}";
+            //form.CustomersLink = $"http://dienchanus.com/Customer/GetCustomerList?guidInfo={form.GuidInfo}";
 
-            _formTypeQuery.InsertFormType(form);
+            //_formTypeQuery.InsertFormType(form);
 
             TempData["message"] = $"Form {form.Name} has been saved!";
 
@@ -70,14 +65,14 @@ namespace DienChanOnline.Controllers
 
         public ActionResult DeleteFormType(string guidInfo)
         {
-            var selectedType = _formTypeQuery.GetFormTypeByGuid(guidInfo);
+            //var selectedType = _formTypeQuery.GetFormTypeByGuid(guidInfo);
 
-            if (selectedType != null)
-            {
-                _formTypeQuery.RemoveFormType(selectedType);
+            //if (selectedType != null)
+            //{
+            //    _formTypeQuery.RemoveFormType(selectedType);
 
-                TempData["message"] = $"Form {selectedType.Name} has been saved!";
-            }
+            //    TempData["message"] = $"Form {selectedType.Name} has been saved!";
+            //}
 
             return RedirectToAction("GetFormType");
         }

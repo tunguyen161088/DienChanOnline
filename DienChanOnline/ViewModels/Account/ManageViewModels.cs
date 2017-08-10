@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace DienChanOnline.Models
+namespace DienChanOnline.ViewModels.Account
 {
     public class IndexViewModel
     {

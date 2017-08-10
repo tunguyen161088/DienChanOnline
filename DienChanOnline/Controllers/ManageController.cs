@@ -6,6 +6,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DienChanOnline.Models;
+using DienChanOnline.ViewModels;
+using DienChanOnline.ViewModels.Account;
 
 namespace DienChanOnline.Controllers
 {

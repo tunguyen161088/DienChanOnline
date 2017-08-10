@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DienChanOnline.Models;
+using DienChanOnline.ViewModels;
+using DienChanOnline.ViewModels.Account;
 
 namespace DienChanOnline.Controllers
 {
@@ -16,12 +18,6 @@ namespace DienChanOnline.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private readonly ICustomerAccountQuery _customerAccountQuery;
-
-        public AccountController(ICustomerAccountQuery customerAccountQuery )
-        {
-            _customerAccountQuery = customerAccountQuery;
-        }
 
         public ApplicationSignInManager SignInManager
         {
