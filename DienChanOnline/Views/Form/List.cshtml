@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DienChanOnline.Models.Form>
+
+@{
+    ViewBag.Title = "Danh Sách Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Sách Form</h2>
+<p>
+    @Html.ActionLink("Tạo Form Mới", "New", "Form", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Tên</th>
+        <th>Tiêu Đề</th>
+        <th>Danh Sách</th>
+        <th>Xóa</th>
+    </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Edit", new {id = item.Id}, null)
+            </td>
+            <td>
+                Tiếng Pháp: <a href="/Customer/NewForm/fr/@item.Id">@item.TitleFr</a><br/><br />
+                Tiếng Việt: <a href="/Customer/NewForm/vn/@item.Id">@item.TitleVn</a><br /><br />
+                Tiếng Anh: <a href="/Customer/NewForm/en/@item.Id">@item.Title</a>
+            </td>
+            <td>
+                @Html.ActionLink("Danh Sách", "Index", "Customer", new {id = item.Id}, null)
+            </td>
+            <td>
+                @Html.ActionLink("Xóa", "Delete", new {id = item.Id}, new {onclick = "return confirm('Bạn có chắc chắn muốn xóa form này không?')"})
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    <a href="@Url.Action("Index", "Admin")">
+        Quay Trở Về
+    </a>
+</div>

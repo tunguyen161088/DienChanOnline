@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using DienChanOnline.Models;
 using DienChanOnline.ViewModels;
 using DienChanOnline.ViewModels.Account;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DienChanOnline.Controllers
 {

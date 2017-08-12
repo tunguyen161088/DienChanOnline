@@ -11,6 +11,7 @@ namespace DienChanOnline
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/script_extension.js",
                         "~/Scripts/bootstrap.js",
+                        "~/Scripts/bootbox.js",
                         "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

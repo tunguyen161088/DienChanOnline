@@ -5,7 +5,6 @@ using PetaPoco;
 
 namespace DienChanOnline.Models
 {
-    [TableName("DienChanOnline..FormType")]
     public class Form
     {
         public int Id { get; set; }

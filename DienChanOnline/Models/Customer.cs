@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using PetaPoco;
 
 namespace DienChanOnline.Models
 {
-    [TableName("DienChanOnline..Customer")]
-    [PrimaryKey("Id", AutoIncrement = true)]
     public class Customer
     {
         public int Id { get; set; }
@@ -29,7 +28,7 @@ namespace DienChanOnline.Models
         public string Email { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = @"Please enter your birthday.")]
-        public DateTime BirthDay { get; set; }
+        public DateTime? BirthDay { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = @"Please enter your job title.")]
         [DisplayName(@"Job Title")]
@@ -62,5 +61,11 @@ namespace DienChanOnline.Models
         public int FormId { get; set; }
 
         public Form Form { get; set; }
+
+        [NotMapped]
+        public string Title { get; set; }
+
+        [NotMapped]
+        public string Language { get; set; }
     }
 }

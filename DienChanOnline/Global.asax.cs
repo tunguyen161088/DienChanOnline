@@ -1,6 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using DienChanOnline.App_Start;
 using DienChanOnline.Infrastructure;
 
 namespace DienChanOnline
@@ -9,6 +11,7 @@ namespace DienChanOnline
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

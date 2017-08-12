@@ -135,10 +135,6 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Http.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Web.Http.Common.4.0.20126.16343\lib\net40\System.Web.Http.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -238,11 +234,15 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\Api\FormController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DAL\QueryBase.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -258,7 +258,18 @@
     <Compile Include="Migrations\201708102222132_AddCustomerAndForm.Designer.cs">
       <DependentUpon>201708102222132_AddCustomerAndForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708111739310_AddProductAndCategory.cs" />
+    <Compile Include="Migrations\201708111739310_AddProductAndCategory.Designer.cs">
+      <DependentUpon>201708111739310_AddProductAndCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708111813581_AddProductAndCategory1.cs" />
+    <Compile Include="Migrations\201708111813581_AddProductAndCategory1.Designer.cs">
+      <DependentUpon>201708111813581_AddProductAndCategory1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Structs\Language.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -278,7 +289,6 @@
     <Compile Include="ViewModels\Account\RegisterViewModel.cs" />
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
-    <Compile Include="Models\Structs.cs" />
     <Compile Include="Models\Structs\RoleName.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -298,10 +308,108 @@
     <Content Include="Images\flag_us.ico" />
     <Content Include="Images\flag_vn.ico" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\Products\OUT001.jpg" />
+    <Content Include="Images\Products\OUT002.jpg" />
+    <Content Include="Images\Products\OUT003.jpg" />
+    <Content Include="Images\Products\OUT004.jpg" />
+    <Content Include="Images\Products\OUT005.jpg" />
+    <Content Include="Images\Products\OUT006.jpg" />
+    <Content Include="Images\Products\OUT007.jpg" />
+    <Content Include="Images\Products\OUT008.jpg" />
+    <Content Include="Images\Products\OUT009.jpg" />
+    <Content Include="Images\Products\OUT010.jpg" />
+    <Content Include="Images\Products\OUT011.jpg" />
+    <Content Include="Images\Products\OUT012.jpg" />
+    <Content Include="Images\Products\OUT013.jpg" />
+    <Content Include="Images\Products\OUT014.jpg" />
+    <Content Include="Images\Products\OUT015.jpg" />
+    <Content Include="Images\Products\OUT016.jpg" />
+    <Content Include="Images\Products\OUT017.jpg" />
+    <Content Include="Images\Products\OUT018.jpg" />
+    <Content Include="Images\Products\OUT019.jpg" />
+    <Content Include="Images\Products\OUT020.jpg" />
+    <Content Include="Images\Products\OUT021.jpg" />
+    <Content Include="Images\Products\OUT022.jpg" />
+    <Content Include="Images\Products\OUT023.jpg" />
+    <Content Include="Images\Products\OUT024.jpg" />
+    <Content Include="Images\Products\OUT025.jpg" />
+    <Content Include="Images\Products\OUT026.jpg" />
+    <Content Include="Images\Products\OUT027.jpg" />
+    <Content Include="Images\Products\OUT028.jpg" />
+    <Content Include="Images\Products\OUT030.jpg" />
+    <Content Include="Images\Products\OUT031.jpg" />
+    <Content Include="Images\Products\OUT032.jpg" />
+    <Content Include="Images\Products\OUT033.jpg" />
+    <Content Include="Images\Products\OUT034.jpg" />
+    <Content Include="Images\Products\OUT035.jpg" />
+    <Content Include="Images\Products\OUT036.jpg" />
+    <Content Include="Images\Products\OUT037.jpg" />
+    <Content Include="Images\Products\OUT038.jpg" />
+    <Content Include="Images\Products\OUT039.jpg" />
+    <Content Include="Images\Products\OUT041.jpg" />
+    <Content Include="Images\Products\OUT042.jpg" />
+    <Content Include="Images\Products\OUT043.jpg" />
+    <Content Include="Images\Products\OUT044.jpg" />
+    <Content Include="Images\Products\OUT045.jpg" />
+    <Content Include="Images\Products\OUT046.jpg" />
+    <Content Include="Images\Products\OUT047.jpg" />
+    <Content Include="Images\Products\OUT048.jpg" />
+    <Content Include="Images\Products\OUT049.jpg" />
+    <Content Include="Images\Products\OUT050.jpg" />
+    <Content Include="Images\Products\OUT051.jpg" />
+    <Content Include="Images\Products\OUT054.jpg" />
+    <Content Include="Images\Products\OUT058.jpg" />
+    <Content Include="Images\Products\OUT059.jpg" />
+    <Content Include="Images\Products\OUT060.jpg" />
+    <Content Include="Images\Products\OUT061.jpg" />
+    <Content Include="Images\Products\OUT062.jpg" />
+    <Content Include="Images\Products\OUT064.jpg" />
+    <Content Include="Images\Products\OUT065.jpg" />
+    <Content Include="Images\Products\OUT067.jpg" />
+    <Content Include="Images\Products\OUT068.jpg" />
+    <Content Include="Images\Products\OUT069.jpg" />
+    <Content Include="Images\Products\OUT070.jpg" />
+    <Content Include="Images\Products\OUT071.jpg" />
+    <Content Include="Images\Products\OUT072.jpg" />
+    <Content Include="Images\Products\OUT073.jpg" />
+    <Content Include="Images\Products\OUT074.jpg" />
+    <Content Include="Images\Products\OUT075.jpg" />
+    <Content Include="Images\Products\OUT076.jpg" />
+    <Content Include="Images\Products\OUT077.jpg" />
+    <Content Include="Images\Products\OUT078.jpg" />
+    <Content Include="Images\Products\OUT079.jpg" />
+    <Content Include="Images\Products\OUT080.jpg" />
+    <Content Include="Images\Products\OUT084.jpg" />
+    <Content Include="Images\Products\OUT085.jpg" />
+    <Content Include="Images\Products\OUT086.jpg" />
+    <Content Include="Images\Products\OUT088.jpg" />
+    <Content Include="Images\Products\OUT089.jpg" />
+    <Content Include="Images\Products\OUT092.jpg" />
+    <Content Include="Images\Products\OUT103.jpg" />
+    <Content Include="Images\Products\OUT104.jpg" />
+    <Content Include="Images\Products\OUT105.jpg" />
+    <Content Include="Images\Products\OUT106.jpg" />
+    <Content Include="Images\Products\OUT107.jpg" />
+    <Content Include="Images\Products\OUT109.jpg" />
+    <Content Include="Images\Products\OUT110.jpg" />
+    <Content Include="Images\Products\OUT111.jpg" />
+    <Content Include="Images\Products\OUT112.jpg" />
+    <Content Include="Images\Products\OUT113.jpg" />
+    <Content Include="Images\Products\OUT114.jpg" />
+    <Content Include="Images\Products\OUT115.jpg" />
+    <Content Include="Images\Products\OUT116.jpg" />
+    <Content Include="Images\Products\OUT117.jpg" />
+    <Content Include="Images\Products\OUT118.jpg" />
+    <Content Include="Images\Products\OUT119.jpg" />
+    <Content Include="Images\Products\OUT120.jpg" />
+    <Content Include="Images\Products\OUT29.jpg" />
+    <Content Include="Images\Products\OUT89.jpg" />
     <Content Include="Models\Generated\Database.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Database.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -362,17 +470,15 @@
     <Content Include="Views\Customer\Form.cshtml" />
     <Content Include="Views\Customer\FormResult.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\GetFormType.cshtml" />
-    <Content Include="Views\Admin\EditFormType.cshtml" />
     <Content Include="Views\Customer\List.cshtml" />
-    <Content Include="Views\Admin\DetailCustomer.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="App.config" />
+    <Content Include="Views\Form\List.cshtml" />
+    <Content Include="Views\Form\Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Api\" />
-    <Folder Include="Images\Products\" />
+    <Folder Include="Views\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -391,6 +497,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708102222132_AddCustomerAndForm.resx">
       <DependentUpon>201708102222132_AddCustomerAndForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708111739310_AddProductAndCategory.resx">
+      <DependentUpon>201708111739310_AddProductAndCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708111813581_AddProductAndCategory1.resx">
+      <DependentUpon>201708111813581_AddProductAndCategory1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

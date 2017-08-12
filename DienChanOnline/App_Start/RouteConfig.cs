@@ -10,6 +10,8 @@ namespace DienChanOnline
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRouteLowercase(
                 name: "HomePage",
                 url: "index",

@@ -1,6 +1,7 @@
-﻿@model DienChanOnline.Models.Customer
+﻿@using DienChanOnline.Models.Structs
+@model DienChanOnline.Models.Customer
 @{
-    //ViewBag.Title = Model.Title;
+    ViewBag.Title = "Customer Form";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
@@ -15,122 +16,105 @@
         <img src="@Url.Content("~/Images/flag_fr.ico")" alt="French" style="width: 50px; height: 50px" />
     </button>
 </div>
-@*<h2>@Model.Title</h2>*@
-@using (Html.BeginForm("Save", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<h2 id="form-header" data-form-id="@Model.FormId" data-form-lang ="@Model.Language">@Model.Title</h2>
+@using (Html.BeginForm("Save", "Customer"))
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2", id = "customer-info-first-name" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2", id = "customer-info-last-name" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-2", id = "customer-info-phone-number" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2", id = "customer-info-email" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.BirthDay, new { @class = "control-label col-md-2", id = "customer-info-birth-day" })
-            <div class="col-md-10">
-                @(ViewBag.Disable == "true" ? Html.EditorFor(model => model.BirthDay, new {htmlAttributes = new {@class = "form-control"}}) : Html.EditorFor(model => model.BirthDay, new {htmlAttributes = new {@class = "form-control", @type = "date"}}))
-                @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Job, new { @class = "control-label col-md-2", id = "customer-info-job" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Job, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Job, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address1, new { @class = "control-label col-md-2", id = "customer-info-address1" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address2, new { @class = "control-label col-md-2", id = "customer-info-address2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2", id = "customer-info-city" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.State, new { @class = "control-label col-md-2", id = "customer-info-state" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Zip, new { @class = "control-label col-md-2", id = "customer-info-zip" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Zip, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Country, new { @class = "control-label col-md-2", id = "customer-info-country" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Purpose, new { @class = "control-label col-md-2", id = "customer-info-purpose" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Purpose, 10, 50, new { htmlAttributes = new { @class = "form-control" } })
-                <br />
-                @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        @Html.HiddenFor(m => m.FormId)
-        @if (ViewBag.Disable != "true")
-        {
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Submit" class="btn btn-default" id="form-submit" />
-                </div>
-            </div>
-        }
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, new { id = "customer-info-first-name" })
+
+        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
     </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, new { id = "customer-info-last-name" })
+
+        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, new { id = "customer-info-phone-number" })
+
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { id = "customer-info-email" })
+
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.BirthDay, new { id = "customer-info-birth-day" })
+            @Html.TextBoxFor(model => model.BirthDay, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date"})
+            @Html.ValidationMessageFor(model => model.BirthDay, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Job, new { id = "customer-info-job" })
+
+            @Html.TextBoxFor(model => model.Job, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Job, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address1, new { id = "customer-info-address1" })
+
+            @Html.TextBoxFor(model => model.Address1, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address2, new { id = "customer-info-address2" })
+
+            @Html.TextBoxFor(model => model.Address2, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, new { id = "customer-info-city" })
+
+            @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.State, new { id = "customer-info-state" })
+
+            @Html.TextBoxFor(model => model.State, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Zip, new { id = "customer-info-zip" })
+
+            @Html.TextBoxFor(model => model.Zip, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Zip, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Country, new { id = "customer-info-country" })
+
+            @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Purpose, new { id = "customer-info-purpose" })
+
+            @Html.TextAreaFor(model => model.Purpose, 10, 50, new { @class = "form-control" })
+            <br />
+            @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger" })
+        </div>
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.FormId)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-primary" id="form-submit" />
+            </div>
+        </div>
 }
-@if (ViewBag.Disable == "true")
+@if (User.IsInRole(RoleName.Administrator))
 {
     <div>
-        @*@Html.ActionLink("Quay trở về", "GetCustomerList", new { id = Model.Id })*@
+        @Html.ActionLink("Quay trở về", "Index", "Form")
     </div>
 }
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

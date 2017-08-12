@@ -7,7 +7,7 @@ using DienChanOnline.Models.Structs;
 
 namespace DienChanOnline.Controllers
 {
-    //[Authorize(Roles = RoleName.Administrator)]
+    [Authorize(Roles = RoleName.Administrator)]
     public class AdminController: Controller
     {
         public ActionResult Index()

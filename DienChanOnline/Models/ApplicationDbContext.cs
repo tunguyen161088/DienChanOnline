@@ -11,6 +11,10 @@ namespace DienChanOnline.Models
 
         public DbSet<Form> Forms { get; set; }
 
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
