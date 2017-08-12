@@ -3,15 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DienChanOnline.Models;
+using System.Data.Entity;
+using DienChanOnline.ViewModels;
 
 namespace DienChanOnline.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
-        public ActionResult Index()
+        private readonly ApplicationDbContext _context;
+        public int PageSize = 10;
+
+        public ProductController()
         {
-            return View();
+            _context= new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
+        // GET: Product
+        [Route("product/{categoryId}/{page?}")]
+        public ActionResult Index(int categoryId, int page = 1)
+        {
+            var products = _context.Products.Include(p => p.Category).Where(c => c.CategoryId == categoryId).ToList();
+
+            var model = new ProductViewModel
+            {
+                Products = products.Skip((page - 1) * PageSize).Take(PageSize).ToList(),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = products.Count
+                }
+            };
+
+            return View("List", model);
         }
     }
 }

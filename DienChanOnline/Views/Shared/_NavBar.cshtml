@@ -19,6 +19,9 @@
                 {
                     <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
                 }
+                <li>@Html.ActionLink("Tool", "Index", "Product", new { categoryId = 1 }, null)</li>
+                <li>@Html.ActionLink("Book", "Index", "Product", new { categoryId = 2 }, null)</li>
+                <li>@Html.ActionLink("Course", "Index", "Product", new { categoryId = 3 }, null)</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
             </ul>
             @Html.Partial("_LoginPartial")

@@ -236,6 +236,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\Api\FormController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -249,6 +250,7 @@
     </Compile>
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Managers\Helpers\Extensions.cs" />
+    <Compile Include="Managers\Helpers\PagingHelper.cs" />
     <Compile Include="Managers\Helpers\SendEmailHelper.cs" />
     <Compile Include="Migrations\201708092009021_InitialModel.cs" />
     <Compile Include="Migrations\201708092009021_InitialModel.Designer.cs">
@@ -267,7 +269,10 @@
       <DependentUpon>201708111813581_AddProductAndCategory1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartLine.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Structs\Language.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
@@ -293,6 +298,8 @@
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
@@ -475,10 +482,13 @@
     <Content Include="App.config" />
     <Content Include="Views\Form\List.cshtml" />
     <Content Include="Views\Form\Form.cshtml" />
+    <Content Include="Views\Product\List.cshtml" />
+    <Content Include="Views\Product\Product.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Product\" />
+    <Folder Include="Views\AddToCart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

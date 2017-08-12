@@ -1,0 +1,17 @@
+﻿@using DienChanOnline.Managers.Helpers
+@model DienChanOnline.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Product List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var p in Model.Products)
+{
+    @Html.Partial("Product", p)
+}
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</div>
+<br/>
