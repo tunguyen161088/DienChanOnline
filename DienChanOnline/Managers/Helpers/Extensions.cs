@@ -1,11 +1,23 @@
 ﻿using System;
 using System.Globalization;
 using System.Net;
+using DienChanOnline.Models.Structs;
 
 namespace DienChanOnline.Managers.Helpers
 {
     public static class Extensions
     {
+        public static string ToCurrency(this decimal m, CurrencyType c)
+        {
+            switch (c)
+            {
+                case CurrencyType.Euro:
+                    return m.ToString("c", CultureInfo.GetCultureInfo("fr-FR"));
+                default:
+                    return m.ToString("");
+            }
+        }
+
         public static string Translate(this string text, string languagePair)
         {
             var url = $"http://www.google.com/translate_t?hl=en&ie=UTF8&text={text}&langpair={languagePair}";

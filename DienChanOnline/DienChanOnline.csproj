@@ -274,6 +274,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Structs\CurrencyType.cs" />
     <Compile Include="Models\Structs\Language.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -485,6 +486,7 @@
     <Content Include="Views\Product\List.cshtml" />
     <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

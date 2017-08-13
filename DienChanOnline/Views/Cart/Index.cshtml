@@ -1,4 +1,6 @@
-﻿@model DienChanOnline.ViewModels.CartViewModel
+﻿@using DienChanOnline.Managers.Helpers
+@using DienChanOnline.Models.Structs
+@model DienChanOnline.ViewModels.CartViewModel
 
 @{
     ViewBag.Title = "Cart";
@@ -6,35 +8,47 @@
 }
 
 <h2>Your cart</h2>
-<table class="table table-bordered table-hover">
+<table id="cartTable" class="table table-bordered table-hover">
     <thead>
-    <tr>
-        <th>Quantity</th>
-        <th>Item</th>
-        <th class="text-right">Price</th>
-        <th class="text-right">Subtotal</th>
-    </tr>
+        <tr>
+            <th>Quantity</th>
+            <th>Item</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+            <th class="text-right">Remove</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach (var line in Model.Cart.Lines) {
-        <tr>
-            <td class="text-center">@line.Quantity</td>
-            <td class="text-left">@line.Product.Name</td>
-            <td class="text-right">@line.Product.Price.ToString("c")
-            </td>
-            <td class="text-right">
-                @((line.Quantity * line.Product.Price).ToString("c"))
-            </td>
-        </tr>
-    }
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.Product.Name</td>
+                <td class="text-right">
+                    @line.Product.Price.ToCurrency(CurrencyType.Euro)
+                </td>
+                <td class="text-right">
+                    @((line.Quantity * line.Product.Price).ToCurrency(CurrencyType.Euro))
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("id", line.Product.Id)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="btn btn-sm btn-warning"
+                               type="submit" value="Remove" />
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
     <tfoot>
-    <tr>
-        <td colspan="3" class="text-right">Total:</td>
-        <td class="text-right">
-            @Model.Cart.ComputeTotalValue().ToString("c")
-        </td>
-    </tr>
+        <tr>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">
+                @Model.Cart.ComputeTotalValue().ToCurrency(CurrencyType.Euro)
+            </td>
+        </tr>
     </tfoot>
 </table>
 <div class="text-center">
