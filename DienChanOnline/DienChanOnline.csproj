@@ -248,6 +248,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\CartModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Managers\Helpers\Extensions.cs" />
     <Compile Include="Managers\Helpers\PagingHelper.cs" />
@@ -272,8 +273,10 @@
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartLine.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ShippingDetails.cs" />
     <Compile Include="Models\Structs\CurrencyType.cs" />
     <Compile Include="Models\Structs\Language.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
@@ -487,6 +490,8 @@
     <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Summary.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\OrderSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

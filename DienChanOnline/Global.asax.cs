@@ -4,6 +4,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using DienChanOnline.App_Start;
 using DienChanOnline.Infrastructure;
+using DienChanOnline.Models;
 
 namespace DienChanOnline
 {
@@ -16,8 +17,11 @@ namespace DienChanOnline
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+
+
         }
     }
 }

@@ -23,36 +23,36 @@ namespace DienChanOnline.Controllers
         }
 
         // GET: AddToCart
-        public ActionResult Index(string returnUrl)
+        public ActionResult Index(Cart cart, string returnUrl)
         {
             var model = new CartViewModel
             {
-                Cart = GetCart(),
+                Cart = cart,
                 ReturnUrl = returnUrl
             };
 
             return View(model);
         }
 
-        public RedirectToRouteResult AddToCart(int id, string
+        public RedirectToRouteResult AddToCart(Cart cart, int id, string
             returnUrl)
         {
             Product product = _context.Products
                 .FirstOrDefault(p => p.Id == id);
             if (product != null)
             {
-                GetCart().AddItem(product, 1);
+                cart.AddItem(product, 1);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
-        public RedirectToRouteResult RemoveFromCart(int id, string
+        public RedirectToRouteResult RemoveFromCart(Cart cart, int id, string
             returnUrl)
         {
             Product product = _context.Products
                 .FirstOrDefault(p => p.Id == id);
             if (product != null)
             {
-                GetCart().RemoveLine(product);
+                cart.RemoveLine(product);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
@@ -62,15 +62,27 @@ namespace DienChanOnline.Controllers
             return PartialView(cart);
         }
 
-        private Cart GetCart()
+        public ActionResult Checkout(Cart cart)
         {
-            Cart cart = (Cart)Session["Cart"];
-            if (cart == null)
+            var model = new ShippingDetails
             {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
+                Cart = cart
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        {
+            if (!ModelState.IsValid)
+                return View(shippingDetails);
+
+            //do something
+
+            cart.Clear();
+
+            return View("OrderSummary");
         }
     }
 }

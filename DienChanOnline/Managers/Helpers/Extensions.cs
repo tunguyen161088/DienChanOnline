@@ -14,7 +14,7 @@ namespace DienChanOnline.Managers.Helpers
                 case CurrencyType.Euro:
                     return m.ToString("c", CultureInfo.GetCultureInfo("fr-FR"));
                 default:
-                    return m.ToString("");
+                    return m.ToString("c");
             }
         }
 

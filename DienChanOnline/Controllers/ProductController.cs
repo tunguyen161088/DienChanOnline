@@ -43,5 +43,15 @@ namespace DienChanOnline.Controllers
 
             return View("List", model);
         }
+
+        public ActionResult GetProductDetail(int categoryId, int productId)
+        {
+            var product = _context.Products.FirstOrDefault(p => p.Id == productId);
+
+            if (product == null)
+                return RedirectToAction("Index", new {categoryId});
+
+            return View("ProductDetail", product);
+        }
     }
 }
