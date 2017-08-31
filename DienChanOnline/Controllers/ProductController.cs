@@ -12,7 +12,7 @@ namespace DienChanOnline.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public int PageSize = 10;
+        public int PageSize = 24;
 
         public ProductController()
         {

@@ -235,6 +235,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\Site_extension.css" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -250,7 +251,7 @@
     </Compile>
     <Compile Include="Infrastructure\CartModelBinder.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
-    <Compile Include="Managers\Helpers\Extensions.cs" />
+    <Compile Include="Managers\ReferenceManager.cs" />
     <Compile Include="Managers\Helpers\PagingHelper.cs" />
     <Compile Include="Managers\Helpers\SendEmailHelper.cs" />
     <Compile Include="Migrations\201708092009021_InitialModel.cs" />

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using DienChanOnline.DAL;
-using DienChanOnline.Managers.Helpers;
+using DienChanOnline.Managers;
 using DienChanOnline.Models;
 using DienChanOnline.Models.Structs;
 

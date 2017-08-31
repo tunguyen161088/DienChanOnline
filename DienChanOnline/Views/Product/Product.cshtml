@@ -1,9 +1,20 @@
 ﻿@using System.Globalization
-@using DienChanOnline.Managers.Helpers
+@using DienChanOnline.Managers
 @using DienChanOnline.Models.Structs
 @model DienChanOnline.Models.Product
+    
 
-<div class="well">
+<div class="product-card">
+    <div class="product-image">
+        <img src="@Model.ImageUrl">
+    </div>
+    <div class="product-info">
+        <h5>@Model.Name</h5>
+        <h6>@Model.Price.ToCurrency(CurrencyType.Euro)</h6>
+    </div>
+</div>
+
+@*<div class="well">
     <h3>
         <strong>@Model.Name</strong>
         <span class="pull-right label label-primary">@Model.Price.ToCurrency(CurrencyType.Euro)</span>
@@ -13,8 +24,9 @@
         <div class="pull-right">
             @Html.HiddenFor(x => x.Id)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-success" value="Add to cart" />
+            <input type="submit" class="btn btn-success" value="Add to cart"/>
         </div>
     }
     <span class="lead"> @Model.Description</span>
-</div>
+
+</div>*@

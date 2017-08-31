@@ -3,9 +3,9 @@ using System.Globalization;
 using System.Net;
 using DienChanOnline.Models.Structs;
 
-namespace DienChanOnline.Managers.Helpers
+namespace DienChanOnline.Managers
 {
-    public static class Extensions
+    public static class ReferenceManager
     {
         public static string ToCurrency(this decimal m, CurrencyType c)
         {
