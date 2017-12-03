@@ -242,3 +242,4 @@ ModelManifest.xml
 .fake/
 App.config
 ConnectionString.config
+/DienChanOnline/ConnectString.config
