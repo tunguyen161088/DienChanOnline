@@ -25,7 +25,7 @@ namespace DienChanOnline
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/site.css",
-                      "~/Content/site_extension.css"));
+                      "~/Content/site_extension.css")); 
         }
     }
 }
